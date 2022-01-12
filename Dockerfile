@@ -1,6 +1,6 @@
 FROM python:3.7-alpine
 
-RUN apk update && apk --no-cache add git
+RUN apk update && apk --no-cache add git gcc
 
 COPY ./requirements.txt /app/requirements.txt
 
