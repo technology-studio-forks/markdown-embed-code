@@ -47,26 +47,26 @@ event = PartialGitHubEvent.parse_raw(contents)
 
 ref = None
 
-if settings.github_event_name == 'pull_request':
+if settings.github_event_name == "pull_request":
     if event.number is not None:
         number = event.number
     elif event.inputs and event.inputs.number:
         number = event.inputs.number
     else:
         sys.exit(1)
-    
+
     pr = repo.get_pull(number)
     if pr.merged:
         # ignore at merged
         sys.exit(0)
     ref = pr.head.ref
-elif settings.github_event_name == 'push':
+elif settings.github_event_name == "push":
     ref = event.ref
 
 if not ref:
-    print('unknown ref', ref)
+    print("unknown ref", ref)
     sys.exit(0)
-    
+
 if not settings.input_output.is_dir():
     output_path = settings.input_output
 else:

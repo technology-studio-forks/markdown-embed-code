@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.10.5-alpine
 
 RUN apk update && apk --no-cache add git gcc libc-dev libffi-dev
 
