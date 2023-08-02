@@ -7,18 +7,18 @@ See [demo repo](https://github.com/tokusumi/readme-code-testing) if you are inte
 
 ## How to use
 
-In markdown, write code block as follows (notice that escape sequence "\\" must be eliminated):
+In markdown, write code block as follows:
 
-```markdown
-　\```python:tests/src/sample.py
- 
-　\```
+````markdown
+```python:tests/src/sample.py
 
-  And, you can refer specific lines as
-  \```python:tests/src/sample.py [4-5]
-  
-  \```
 ```
+
+And, you can refer specific lines as
+```python:tests/src/sample.py [4-5]
+ 
+```
+````
 
 Then, this action referes to `tests/src/sample.py` and modifies markdown as (if something code is written, they are overridden):
 
@@ -57,6 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
           ref: refs/heads/${{ github.head_ref }}
