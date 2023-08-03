@@ -33,6 +33,9 @@ class PartialGitHubEvent(BaseModel):
 
 
 settings = Settings()
+
+subprocess.run(['pwd'])
+subprocess.run(['ls', '-la'])
 subprocess.run(["git", "config", "--local", "user.name", "github-actions"], check=True)
 subprocess.run(
     ["git", "config", "--local", "user.email", "github-actions@github.com"], check=True
@@ -79,7 +82,6 @@ embedded_doc = md(doc)
 
 with open(output_path, "w") as f:
     f.write(embedded_doc)
-
 
 proc = subprocess.run(
     ["git", "status", "--porcelain"], check=True, stdout=subprocess.PIPE
