@@ -10,11 +10,13 @@ COPY ./markdown_embed_code /app/markdown_embed_code
 
 ENV PYTHONPATH=/app
 
-RUN adduser --disabled-password --gecos "" --uid 1001 runner \
-    && groupadd docker --gid 123 \
-    && usermod -aG sudo runner \
-    && usermod -aG docker runner \
-    && echo "%sudo   ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers \
-    && echo "Defaults env_keep += \"DEBIAN_FRONTEND\"" >> /etc/sudoers
+RUN adduser -D -u 1001 runner \
+    && adduser runner wheel \
+    && adduser runner $(getent group 123 | cut -d: -f1) \
+    && apk add --no-cache sudo \
+    && mkdir -p /etc/sudoers.d \
+    && echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/runner \
+    && chmod 0440 /etc/sudoers.d/runner \
+    && echo "includedir /etc/sudoers.d" >> /etc/sudoers
 
 CMD ["python", "-m", "markdown_embed_code"]
