@@ -10,6 +10,9 @@ RUN adduser -D -u 1001 runner \
     && echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/runner \
     && chmod 0440 /etc/sudoers.d/runner \
     && echo "includedir /etc/sudoers.d" >> /etc/sudoers
+USER root 
+
+RUN mkdir /app && chown runner:runner /app
 
 USER runner
 
