@@ -1,6 +1,5 @@
 import subprocess
 import sys
-
 from pathlib import Path
 from typing import Optional
 
@@ -34,13 +33,10 @@ class PartialGitHubEvent(BaseModel):
 
 
 settings = Settings()
-
 subprocess.run(["git", "config", "--local", "user.name", "github-actions"], check=True)
 subprocess.run(
     ["git", "config", "--local", "user.email", "github-actions@github.com"], check=True
 )
-
-
 
 g = Github(settings.input_token.get_secret_value())
 repo = g.get_repo(settings.github_repository)
