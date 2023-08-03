@@ -1,5 +1,13 @@
 import subprocess
 import sys
+
+print("Python version:")
+print(sys.version)
+
+print("\nPython path:")
+for path in sys.path:
+    print(path)
+
 from pathlib import Path
 from typing import Optional
 
@@ -46,14 +54,6 @@ subprocess.run(
     ["git", "config", "--local", "user.email", "github-actions@github.com"], check=True
 )
 
-import sys
-
-print("Python version:")
-print(sys.version)
-
-print("\nPython path:")
-for path in sys.path:
-    print(path)
 
 
 g = Github(settings.input_token.get_secret_value())
