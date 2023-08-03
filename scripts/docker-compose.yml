@@ -5,9 +5,9 @@ services:
     build: ../
     command: python -m markdown_embed_code
     volumes:
-      - ../:/app/
+      - ../:/
     environment:
       - INPUT_OUTPUT=readme.md
       - INPUT_TOKEN=xxx
       - GITHUB_REPOSITORY=markdown-embed-code
-      - GITHUB_EVENT_PATH=https://github.com/tokusumi/markdown-embed-code/pull/6
+      - GITHUB_EVENT_PATH=https://github.com/technology-studio/markdown-embed-code/pull/6
