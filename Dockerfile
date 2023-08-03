@@ -8,4 +8,4 @@ RUN pip install --no-cache -r ./requirements.txt
 
 ENV PYTHONPATH=/
 
-CMD ["python", "-m", "/"]
+CMD ["python", "-m", "markdown_embed_code"]
