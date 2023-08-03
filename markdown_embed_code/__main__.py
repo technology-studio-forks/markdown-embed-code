@@ -1,13 +1,6 @@
 import subprocess
 import sys
 
-print("Python version:")
-print(sys.version)
-
-print("\nPython path:")
-for path in sys.path:
-    print(path)
-
 from pathlib import Path
 from typing import Optional
 
@@ -42,14 +35,7 @@ class PartialGitHubEvent(BaseModel):
 
 settings = Settings()
 
-subprocess.run(['pwd'])
-subprocess.run(['ls', '-la'])
-subprocess.run(['ls', '-la', '.git'])
-subprocess.run(['cat', '.git/config'])
-subprocess.run(['git', 'status'])
-subprocess.run(['git', 'config', '-l'])
-subprocess.run(['git', 'config', '--local', '-l'])
-subprocess.run(["git", "config", "--local", "user.name", "github-actions" "--verbose"], check=True)
+subprocess.run(["git", "config", "--local", "user.name", "github-actions"], check=True)
 subprocess.run(
     ["git", "config", "--local", "user.email", "github-actions@github.com"], check=True
 )
