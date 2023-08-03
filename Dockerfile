@@ -1,6 +1,6 @@
 FROM python:3.10.5-alpine
 
-RUN apk update && apk --no-cache add git gcc libc-dev libffi-dev
+RUN apk update && apk --no-cache add git gcc libc-dev libffi-dev passwd
 
 COPY ./requirements.txt /app/requirements.txt
 
