@@ -80,6 +80,7 @@ embedded_doc = md(doc)
 with open(output_path, "w") as f:
     f.write(embedded_doc)
 
+
 proc = subprocess.run(
     ["git", "status", "--porcelain"], check=True, stdout=subprocess.PIPE
 )
