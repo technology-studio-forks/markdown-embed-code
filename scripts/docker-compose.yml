@@ -4,8 +4,9 @@ services:
   app:
     build: ../
     command: python -m markdown_embed_code
+    working_dir: /github/workspace
     volumes:
-      - ../:/
+      - ../:/github/workspace
     environment:
       - INPUT_OUTPUT=readme.md
       - INPUT_TOKEN=xxx

@@ -6,6 +6,6 @@ COPY ./requirements.txt ./requirements.txt
 
 RUN pip install --no-cache -r ./requirements.txt
 
-ENV PYTHONPATH=/
+ENV PYTHONPATH=markdown_embed_code
 
 CMD ["python", "-m", "markdown_embed_code"]
