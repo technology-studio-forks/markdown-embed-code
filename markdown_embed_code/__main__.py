@@ -46,6 +46,16 @@ subprocess.run(
     ["git", "config", "--local", "user.email", "github-actions@github.com"], check=True
 )
 
+import sys
+
+print("Python version:")
+print(sys.version)
+
+print("\nPython path:")
+for path in sys.path:
+    print(path)
+
+
 g = Github(settings.input_token.get_secret_value())
 repo = g.get_repo(settings.github_repository)
 if not settings.github_event_path.is_file():
